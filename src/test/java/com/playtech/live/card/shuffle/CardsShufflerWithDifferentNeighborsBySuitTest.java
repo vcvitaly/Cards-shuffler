@@ -24,9 +24,8 @@ class CardsShufflerWithDifferentNeighborsBySuitTest {
     void testSingleCardDeck() {
         CardsShufflerWithDifferentNeighborsBySuit shuffler = new CardsShufflerWithDifferentNeighborsBySuit(ThreadLocalRandom.current());
 
-        List<Card> singletonList = List.of(Card.C3);
-        List<Card> shuffledDeck = shuffler.shuffleCards(singletonList);
-        assertThat(shuffledDeck).isEqualTo(singletonList);
+        List<Card> shuffledDeck = shuffler.shuffleCards(List.of(Card.C3));
+        assertThat(shuffledDeck).isEqualTo(List.of(Card.C3));
     }
 
     @Test
@@ -60,7 +59,6 @@ class CardsShufflerWithDifferentNeighborsBySuitTest {
             assertThat(cards.get(i).suit())
                     .withFailMessage("Same suit on neighbor positions: " + i + " and " + (i - 1))
                     .isNotEqualTo(cards.get(i - 1).suit());
-
         }
     }
 }
